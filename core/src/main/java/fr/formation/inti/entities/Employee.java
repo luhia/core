@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="EMPLOYEE", uniqueConstraints = {@UniqueConstraint(columnNames = {"EMP_NO"})})
+@Table(name = "EMPLOYEE", uniqueConstraints = { @UniqueConstraint(columnNames = { "EMP_NO" }) })
 public class Employee {
 	
 	private Long empId;
@@ -30,13 +30,13 @@ public class Employee {
 	private Date hideDate;
 	private Float salary;
 	private byte[] image;
-	
+	 
 	private Department department;
 	private Set<Employee> employees = new HashSet<Employee>(0);
-	
-	public Employee() {	
+	 
+	public Employee() {
 	}
-	
+	 
 	public Employee(Long empId, String empName, String job, Employee manager,
 	        Date hideDate, Float salary, Float comm, Department department) {
 	    this.empId = empId;
@@ -48,49 +48,7 @@ public class Employee {
 	    this.salary = salary;
 	    this.department = department;
 	}
-	
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "MNG_ID")
-	public Employee getManager() {
-	    return manager;
-	}
 	 
-	public void setManager(Employee manager) {
-	    this.manager = manager;
-	}
-	
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "DEPT_ID", nullable = false)
-	public Department getDepartment() {
-	    return department;
-	}
-	 
-	public void setDepartement(Department department) {
-	    this.department = department;
-	}
-	 
-	
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empId")
-	public Set<Employee> getEmployees() {
-	    return employees;
-	}
-	 
-	public void setEmployees(Set<Employee> employees) {
-	    this.employees = employees;
-	}
-	
-	
-	
-	
-	
-	
-
-	
 	@Id
 	@Column(name = "EMP_ID")
 	public Long getEmpId() {
@@ -128,6 +86,15 @@ public class Employee {
 	    this.job = job;
 	}
 	 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MNG_ID")
+	public Employee getManager() {
+	    return manager;
+	}
+	 
+	public void setManager(Employee manager) {
+	    this.manager = manager;
+	}
 	 
 	@Column(name = "HIRE_DATE", nullable = false)
 	@Temporal(TemporalType.DATE)
@@ -158,5 +125,23 @@ public class Employee {
 	    this.image = image;
 	}
 	 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DEPT_ID", nullable = false)
+	public Department getDepartment() {
+	    return department;
+	}
 	 
+	public void setDepartment(Department department) {
+	    this.department = department;
+	}
+	 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empId")
+	public Set<Employee> getEmployees() {
+	    return employees;
+	}
+	 
+	public void setEmployees(Set<Employee> employees) {
+	    this.employees = employees;
+	}
+ 
 }
