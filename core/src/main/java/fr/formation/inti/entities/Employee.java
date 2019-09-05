@@ -34,14 +34,14 @@ public class Employee {
 	private Float salary;
 	private byte[] image;
 	
-	private Departement departement;
+	private Department department;
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	
 	public Employee() {	
 	}
 	
 	public Employee(Long empId, String empName, String job, Employee manager,
-	        Date hideDate, Float salary, Float comm, Departement departement) {
+	        Date hideDate, Float salary, Float comm, Department department) {
 	    this.empId = empId;
 	    this.empNo = "E" + this.empId;
 	    this.empName = empName;
@@ -49,7 +49,7 @@ public class Employee {
 	    this.manager = manager;
 	    this.hideDate = hideDate;
 	    this.salary = salary;
-	    this.departement = departement;
+	    this.department = department;
 	}
 	
 	
@@ -68,12 +68,12 @@ public class Employee {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DEPT_ID", nullable = false)
-	public Departement getDepartement() {
-	    return departement;
+	public Department getDepartment() {
+	    return department;
 	}
 	 
-	public void setDepartement(Departement departement) {
-	    this.departement = departement;
+	public void setDepartement(Department department) {
+	    this.department = department;
 	}
 	 
 	

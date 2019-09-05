@@ -15,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="DEPARTEMENT", uniqueConstraints = {@UniqueConstraint(columnNames = {"DEPT_NO"})})
-public class Departement {
+public class Department {
 
 	private int deptId;
 	private String deptNo;	
@@ -24,11 +24,11 @@ public class Departement {
 	
 	private Set<Employee> employees = new HashSet<Employee>(0);
 	
-	public Departement() {
+	public Department() {
 		
 	}
 
-	public Departement(int deptId, String deptName, String location) {
+	public Department(int deptId, String deptName, String location) {
 		this.deptId = deptId;
 		this.deptNo = "D" + this.deptId;
 		this.deptName = deptName;
@@ -36,7 +36,7 @@ public class Departement {
 	}
 
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "departement")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
 	public Set<Employee> getEmployees() {
 		return employees;
 	}
