@@ -17,13 +17,13 @@ public class QueryObjectDemo {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			session.getTransaction().begin();
+			session.getTransaction().begin();																			// création d'une requète SQL
 			
 			String sql = "Select e from " + Employee.class.getName() + " e " + " order by e.empName, e.empNo ";
 			
 			Query<Employee> query = session.createQuery(sql);
 			
-	        List<Employee> employees = query.getResultList();
+	        List<Employee> employees = query.getResultList();															//execution de la requête SQL
 	           
 	        for (Employee emp : employees) {
 	            System.out.println("Emp: " + emp.getEmpNo() + " : " + emp.getEmpName());
