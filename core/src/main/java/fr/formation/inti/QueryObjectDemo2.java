@@ -17,7 +17,7 @@ public class QueryObjectDemo2 {
         Session session = factory.getCurrentSession();
  
         try {               
-            session.getTransaction().begin();														// création d'une requète SQL
+            session.getTransaction().begin();														// création d'une requête SQL
                    
             String sql = "Select e from " + Employee.class.getName() + " e "
                     + " where e.department.deptNo=:deptNo ";
@@ -35,7 +35,7 @@ public class QueryObjectDemo2 {
                 System.out.println("Emp: " + emp.getEmpNo() + " : " + emp.getEmpName());                     
             }
   
-            session.getTransaction().commit();														// fermeture 
+            session.getTransaction().commit();														// fermeture de la requête
         } catch (Exception e) {
             e.printStackTrace();
             
