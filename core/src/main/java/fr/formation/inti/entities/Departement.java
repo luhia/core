@@ -1,4 +1,4 @@
-package o7planning.tutoriel.hibernate.entities;
+package fr.formation.inti.entities;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package o7planning.tutoriel.hibernate.entities;
+package fr.formation.inti.entities;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -41,7 +41,7 @@ public class Employee {
 	}
 	
 	public Employee(Long empId, String empName, String job, Employee manager,
-	        Date hideDate, Float salary, Float comm, Department department) {
+	        Date hideDate, Float salary, Float comm, Departement departement) {
 	    this.empId = empId;
 	    this.empNo = "E" + this.empId;
 	    this.empName = empName;
