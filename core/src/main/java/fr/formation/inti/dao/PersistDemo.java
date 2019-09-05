@@ -19,16 +19,14 @@ public class PersistDemo {
 	       Department department = null;
 	       Employee emp = null;
 	       try {
-	           session.getTransaction().begin();
+	           session.getTransaction().begin();												//début de la requête
 	 
 	           Long maxEmpId = DataUtils.getMaxEmpId(session);
 	           Long empId = maxEmpId + 1;
 	            
-	           // Get Persistent object.
 	           department = DataUtils.findDepartment(session, "D10");
-	            
-	           // Create transient object
-	           emp = new Employee();
+	                       
+	           emp = new Employee();															// Création d'un objet transient (temporaire)
 	           emp.setEmpId(empId);
 	           emp.setEmpNo("E" + empId);
 	           emp.setEmpName("Name " + empId);
@@ -38,25 +36,15 @@ public class PersistDemo {
 	           emp.setHideDate(new Date());
 	           emp.setDepartment(department);
 	            
-	           // Using persist(..)
-	           // Now 'emp' is managed by Hibernate.
-	           // it has Persistent status.
-	           // No action at this time with DB.
-	           session.persist(emp);
+	           session.persist(emp);														//rend emp persistant et géré par hibernate
 	 
-	            
-	           // At this step the data is pushed to the DB.
-	           // Execute Insert statement.
-	           session.getTransaction().commit();
+	           session.getTransaction().commit();											//fin de la requête
 	       } catch (Exception e) {
 	           e.printStackTrace();
 	           session.getTransaction().rollback();
 	       }
-	 
-	       // After the session is closed (commit, rollback, close)
-	       // Objects 'emp', 'dept' became the Detached objects.
-	       // It is no longer in the control of the session.        
-	       System.out.println("Emp No: " + emp.getEmpNo());
+	       
+	       System.out.println("Emp No: " + emp.getEmpNo());									//après commit, roolback ou close, emp et dept deviennent "détaché"
 	        
 	   }
 	    
