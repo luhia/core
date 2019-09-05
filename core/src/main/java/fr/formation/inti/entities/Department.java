@@ -11,8 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
-
 @Entity
 @Table(name="DEPARTMENT", uniqueConstraints = {@UniqueConstraint(columnNames = {"DEPT_NO"})})
 public class Department {
